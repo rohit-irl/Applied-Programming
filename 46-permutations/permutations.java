@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Solution {
 
     public List<List<Integer>> permute(int[] nums) {
@@ -9,7 +8,6 @@ class Solution {
     }
 
     void backtrack(int[] nums, int i, List<List<Integer>> res) {
-        // Base case
         if (i == nums.length) {
             List<Integer> temp = new ArrayList<>();
             for (int x : nums) temp.add(x);
@@ -18,12 +16,8 @@ class Solution {
         }
 
         for (int j = i; j < nums.length; j++) {
-            // swap
             int t = nums[i]; nums[i] = nums[j]; nums[j] = t;
-
             backtrack(nums, i + 1, res);
-
-            // backtrack (undo swap)
             t = nums[i]; nums[i] = nums[j]; nums[j] = t;
         }
     }
