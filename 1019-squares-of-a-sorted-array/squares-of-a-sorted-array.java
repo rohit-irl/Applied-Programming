@@ -2,11 +2,10 @@ class Solution {
     public int[] sortedSquares(int[] nums) {
 
         int n = nums.length;
-        int[] ans = new int[n];
-
+        int[] res = new int[n];
         int left = 0;
         int right = n - 1;
-        int idx = n - 1;
+        int k = n - 1;
 
         while (left <= right) {
 
@@ -14,16 +13,13 @@ class Solution {
             int rightSq = nums[right] * nums[right];
 
             if (leftSq > rightSq) {
-                ans[idx] = leftSq;
+                res[k--] = leftSq;
                 left++;
             } else {
-                ans[idx] = rightSq;
+                res[k--] = rightSq;
                 right--;
             }
-
-            idx--;
         }
-
-        return ans;
+        return res;
     }
 }
