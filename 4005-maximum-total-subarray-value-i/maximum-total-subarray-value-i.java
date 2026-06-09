@@ -8,6 +8,6 @@ class Solution {
             mx = Math.max(mx, num);
             mn = Math.min(mn, num);
         }
-        return 1L * k * (mx - mn);
+        return (long) k * (mx - mn);
     }
 }
