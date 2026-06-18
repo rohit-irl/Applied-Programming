@@ -1,8 +1,13 @@
 class Solution {
     public double angleClock(int hour, int minutes) {
-        double minuteAngle = minutes * 6;
-        double hourAngle = (hour % 12) * 30 + minutes * 0.5;
-        double diff = Math.abs(hourAngle - minuteAngle);
-        return Math.min(diff, 360 - diff);
+        
+        double minuteHand = minutes * 6;
+        double hourHand = (30 * hour) + (0.5 * minutes);
+        double angle = Math.abs(hourHand - minuteHand);
+
+        if (angle > 180) {
+            angle = 360 - angle;
+        }
+        return angle;
     }
 }
