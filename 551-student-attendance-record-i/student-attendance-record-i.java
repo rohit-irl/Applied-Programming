@@ -8,7 +8,7 @@ class Solution {
             if(A >= 2){
                 return false;
             }
-            if(s.contains("LLL")){
+            if(i + 2 < s.length() && s.charAt(i) == 'L' && s.charAt(i + 1) == 'L' && s.charAt(i + 2) == 'L'){
                 return false;
             }
         }
