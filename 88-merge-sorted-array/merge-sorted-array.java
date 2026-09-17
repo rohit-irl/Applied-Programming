@@ -1,32 +1,32 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
+        List<Integer> list = new ArrayList<>();
         int i = 0;
         int j = 0;
-        int k = 0;
-        int res[] = new int[m + n];
         while(i < m && j < n){
-            if(nums1[i] <= nums2[j]){
-                res[k] = nums1[i];
-                k++;
+            if(nums1[i] > nums2[j]){
+                list.add(nums2[j]);
+                j++;
+            }else if(nums2[j] > nums1[i]){
+                list.add(nums1[i]);
                 i++;
-            }else{
-                res[k] = nums2[j];
-                k++;
+            }else if(nums1[i] == nums2[j]){
+                list.add(nums1[i]);
+                list.add(nums2[j]);
+                i++;
                 j++;
             }
         }
-        while(j < n){
-            res[k] = nums2[j];
-            k++;
-            j++;
-        }
         while(i < m){
-            res[k] = nums1[i];
-            k++;
+            list.add(nums1[i]);
             i++;
         }
-        for(int x = 0; x < m+n; x++){
-            nums1[x] = res[x];
+        while(j < n){
+            list.add(nums2[j]);
+            j++;
+        }
+        for(i = 0; i < list.size(); i++){
+            nums1[i] = list.get(i);
         }
     }
 }
