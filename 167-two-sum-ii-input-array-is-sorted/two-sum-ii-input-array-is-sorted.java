@@ -1,16 +1,16 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int i = 0;
-        int j = numbers.length - 1;
-        while(i < j){
-            int sum = numbers[i] + numbers[j];
+        int n = numbers.length;
+        int start = 0;
+        int end = n - 1;
+        while(start < end){
+            int sum = numbers[start] + numbers[end];
             if(sum == target){
-                return new int[]{i + 1, j + 1};
-            }
-            else if(sum > target){
-                j--;
+                return new int[]{start + 1, end + 1};
+            }else if(sum > target){
+                end--;
             }else{
-                i++;
+                start++;
             }
         }
         return new int[]{-1, -1};
