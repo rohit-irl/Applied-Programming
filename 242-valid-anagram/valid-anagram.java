@@ -2,17 +2,22 @@ class Solution {
     public boolean isAnagram(String s, String t) {
         int sl = s.length();
         int tl = t.length();
-        int arr[] = new int[26];
         if(sl != tl){
             return false;
         }
+        HashMap<Character, Integer> map = new HashMap<>();
         for(int i = 0; i < sl; i++){
-            arr[s.charAt(i) - 'a']++;
+            char ch = s.charAt(i);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
-        for(int i = 0; i < tl; i++){
-            arr[t.charAt(i) - 'a']--;
-            if(arr[t.charAt(i) - 'a'] < 0){
+        for(int j = 0; j < tl; j++){
+            char ch = t.charAt(j);
+            if(!map.containsKey(ch)){
                 return false;
+            }
+            map.put(ch, map.get(ch) - 1);
+            if(map.get(ch) == 0){
+                map.remove(ch);
             }
         }
         return true;
