@@ -1,13 +1,15 @@
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        helper(root, res);
+        fun(root, res);
         return res;
     }
-    void helper(TreeNode root, List<Integer> res) {
-        if (root == null) return;
-        helper(root.left, res);
-        helper(root.right, res);
-        res.add(root.val);
+    void fun(TreeNode node, List<Integer> res){
+        if(node == null){
+            return;
+        }
+        fun(node.left, res);
+        fun(node.right, res);
+        res.add(node.val);
     }
 }
