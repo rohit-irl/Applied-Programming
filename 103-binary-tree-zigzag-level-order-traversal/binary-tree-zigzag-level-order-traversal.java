@@ -8,11 +8,22 @@ class Solution {
         q.offer(root);
         boolean leftToRight = true;
         while(!q.isEmpty()){
-            int lvlsize = q.size();
+            int size = q.size();
             List<Integer> temp = new ArrayList<>();
-            while(lvlsize-- > 0){
+            for(int i  = 0; i < size; i++){
+                temp.add(0);
+            }
+            int left = 0;
+            int right = size - 1;
+            while(size-- > 0){
                 TreeNode t = q.poll();
-                temp.add(t.val);
+                if(leftToRight){
+                    temp.set(left, t.val);
+                    left++;
+                }else{
+                    temp.set(right, t.val);
+                    right--;
+                }
                 if(t.left != null){
                     q.offer(t.left);
                 }
@@ -20,11 +31,8 @@ class Solution {
                     q.offer(t.right);
                 }
             }
-            if(!leftToRight){
-                Collections.reverse(temp);
-            }
             res.add(temp);
-            leftToRight = !leftToRight;
+            leftToRight = !leftToRight;        
         }
         return res;
     }
